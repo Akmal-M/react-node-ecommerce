@@ -1,0 +1,10 @@
+.not-found{
+   position: absolute;
+    top: 50%;
+    right: 35%;
+    height: 100vh;
+}
+
+.not-found h2{
+    text-align: center;
+}

@@ -2,7 +2,7 @@ import React, {useContext, useState} from 'react'
 import {GlobalState} from '../../GlobalState'
 import Menu from './icon/menu.svg'
 import Close from './icon/close.svg'
-import Cart from './icon/cart.svg'
+import Cart from './icon/bag.png'
 import {Link} from 'react-router-dom'
 import axios from 'axios'
 
@@ -77,7 +77,7 @@ function Header() {
                 :<div className="cart-icon">
                     <span>{cart.length}</span>
                     <Link to="/cart">
-                        <img src={Cart} alt="" width="30" />
+                        <img src={Cart} alt="" width="30" className='lg:h-14 lg:w-14 h-12 w-12' />
                     </Link>
                 </div>
             }
@@ -86,4 +86,4 @@ function Header() {
     )
 }
 
-export default Header
+export default Header;

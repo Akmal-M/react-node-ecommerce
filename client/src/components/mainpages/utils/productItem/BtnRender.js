@@ -11,9 +11,9 @@ function BtnRender({product, deleteProduct}) {
     return (
         <div className="row_btn">
             {
-                isAdmin ? 
+                isAdmin &&
                 <>
-                    <Link id="btn_buy" to="#!" 
+                    <Link id="btn_buy" to="#!"
                     onClick={() =>deleteProduct(product._id, product.images.public_id)}>
                         Delete
                     </Link>
@@ -21,14 +21,14 @@ function BtnRender({product, deleteProduct}) {
                         Edit
                     </Link>
                 </>
-                : <>
-                    <Link id="btn_buy" to="#!" onClick={() => addCart(product)}>
-                        Buy
-                    </Link>
-                    <Link id="btn_view" to={`/detail/${product._id}`}>
-                        View
-                    </Link>
-                </>
+                // : <>
+                //     <Link id="btn_buy" to="#!" onClick={() => addCart(product)}>
+                //         Buy
+                //     </Link>
+                //     <Link id="btn_view" to={`/detail/${product._id}`}>
+                //         View
+                //     </Link>
+                // </>
             }
                 
         </div>

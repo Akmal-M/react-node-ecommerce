@@ -1,25 +1,47 @@
-.load-page{
-    background: #fff;
-    overflow: hidden;
+.wrapper-loading{
+    position: relative;
+    height: 40vh;
 }
-.loader{
-    width: 300px;
-    height: 300px;
-    margin: auto;
+.loader {
+   position: absolute;
+    right: 50%;
+    top: 50%;
 }
-.loader div{
-    width: calc(100% - 15px);
-    height: calc(100% - 15px);
-    border: 2px solid #fff;
-    border-top: 2px solid crimson;
-    border-radius: 50%;
-    animation: rotate 10s linear infinite alternate-reverse;
+h5 {
+    height: 100px;
+    position: relative;
+    width: 100px;
+    z-index: 2;
+    background-color: rgb(0, 0, 0);
+    border-radius: 50px;
 }
-@keyframes rotate{
-    50%{
-        transform: rotate(80deg);
-    }
-    100%{
-        transform: rotate(360deg);
-    }
+h5::before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    bottom: 45px;
+    z-index: 1;
+    height: 100%;
+    transform-origin: center bottom;
+    -webkit-clip-path: circle(50% at 50% 100%);
+    clip-path: circle(50% at 50% 100%);
+    background-color: rgb(255, 255, 255);
+    animation: rotate 2s linear infinite;
+}
+h5::after {
+    position: absolute;
+    content: '';
+    width: 100%;
+    top: 45px;
+    z-index: 1;
+    height: 100%;
+    transform-origin: center top;
+    -webkit-clip-path: circle(50.0% at 50% 0);
+    clip-path: circle(50.0% at 50% 0);
+    background-color: rgb(255, 255, 255);
+    animation: rotate 2s linear infinite;
+}
+@keyframes rotate {
+    0%{ transform: rotate(0deg);}
+    100%{transform: rotate(-360deg);}
 }

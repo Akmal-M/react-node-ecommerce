@@ -56,7 +56,7 @@ function Categories() {
         <div className="categories">
             <form onSubmit={createCategory}>
                 <label htmlFor="category">Category</label>
-                <input type="text" name="category" value={category} required
+                <input type="text" name="category" className='lg:rounded-full rounded-xl' value={category} required
                 onChange={e => setCategory(e.target.value)} />
 
                 <button type="submit">{onEdit? "Update" : "Create"}</button>
@@ -68,8 +68,8 @@ function Categories() {
                         <div className="row" key={category._id}>
                             <p>{category.name}</p>
                             <div>
-                                <button onClick={() => editCategory(category._id, category.name)}>Edit</button>
-                                <button onClick={() => deleteCategory(category._id)}>Delete</button>
+                                <button onClick={() => editCategory(category._id, category.name)} className='bg-yellow-200'>Edit</button>
+                                <button onClick={() => deleteCategory(category._id)} className='bg-red-500'>Delete</button>
                             </div>
                         </div>
                     ))

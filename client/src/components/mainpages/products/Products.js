@@ -1,11 +1,12 @@
 import React, {useContext, useState} from 'react'
 import {GlobalState} from '../../../GlobalState'
-import ProductItem from '../utils/productItem/ProductItem'
+// import ProductItem from '../utils/productItem/ProductItem'
 import Loading from '../utils/loading/Loading'
 import axios from 'axios'
 import Filters from './Filters'
 import LoadMore from './LoadMore'
 import Banners from "./Banners";
+import CardItem from "../utils/cardItem/cardItem";
 
 
 function Products() {
@@ -17,17 +18,17 @@ function Products() {
     const [loading, setLoading] = useState(false)
     const [isCheck, setIsCheck] = useState(false)
 
-    const handleCheck = (id) =>{
+    const handleCheck = (id) => {
         products.forEach(product => {
-            if(product._id === id) product.checked = !product.checked
+            if (product._id === id) product.checked = !product.checked
         })
         setProducts([...products])
     }
 
-    const deleteProduct = async(id, public_id) => {
+    const deleteProduct = async (id, public_id) => {
         try {
             setLoading(true)
-            const destroyImg = axios.post('/api/destroy', {public_id},{
+            const destroyImg = axios.post('/api/destroy', {public_id}, {
                 headers: {Authorization: token}
             })
             const deleteProduct = axios.delete(`/api/products/${id}`, {
@@ -43,7 +44,7 @@ function Products() {
         }
     }
 
-    const checkAll = () =>{
+    const checkAll = () => {
         products.forEach(product => {
             product.checked = !isCheck
         })
@@ -51,38 +52,39 @@ function Products() {
         setIsCheck(!isCheck)
     }
 
-    const deleteAll = () =>{
+    const deleteAll = () => {
         products.forEach(product => {
-            if(product.checked) deleteProduct(product._id, product.images.public_id)
+            if (product.checked) deleteProduct(product._id, product.images.public_id)
         })
     }
 
-    if(loading) return <div><Loading /></div>
+    if (loading) return <div><Loading/></div>
     return (
         <>
-            <Banners/>
-        <Filters />
-        
-        {
-            isAdmin && 
-            <div className="delete-all">
-                <span>Select all</span>
-                <input type="checkbox" checked={isCheck} onChange={checkAll} />
-                <button onClick={deleteAll}>Delete ALL</button>
-            </div>
-        }
+                <Banners/>
 
-        <div className="products">
+            <Filters/>
+
             {
-                products.map(product => {
-                    return <ProductItem key={product._id} product={product}
-                    isAdmin={isAdmin} deleteProduct={deleteProduct} handleCheck={handleCheck} />
-                })
-            } 
-        </div>
+                isAdmin &&
+                <div className="delete-all">
+                    <span>Select all</span>
+                    <input type="checkbox" checked={isCheck} onChange={checkAll}/>
+                    <button onClick={deleteAll}>Delete ALL</button>
+                </div>
+            }
 
-        <LoadMore />
-        {products.length === 0 && <Loading />}
+            <div className="products">
+                {
+                    products.map(product => {
+                        return <CardItem key={product._id} product={product} isAdmin={isAdmin} deleteProduct={deleteProduct} handleCheck={handleCheck}/>
+                         // <ProductItem key={product._id} product={product} isAdmin={isAdmin} deleteProduct={deleteProduct} handleCheck={handleCheck}/>
+                    })
+                }
+            </div>
+
+            <LoadMore/>
+            {products.length === 0 && <Loading/>}
         </>
     )
 }

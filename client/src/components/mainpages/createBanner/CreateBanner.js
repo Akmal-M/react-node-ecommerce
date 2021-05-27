@@ -3,7 +3,8 @@ import axios from 'axios'
 import {GlobalState} from '../../../GlobalState'
 import Loading from '../utils/loading/Loading'
 import {useHistory, useParams} from 'react-router-dom'
-import './CreateBanner.css'
+import styles from  './CreateBanner.module.css'
+
 const initialState = {
     banner_id: '',
     _id: ''
@@ -116,8 +117,8 @@ function CreateBanner() {
         display: images ? "block" : "none"
     }
     return (
-        <div className="create_product mt-20">
-            <div className="upload">
+        <div className={styles.create_product}>
+            <div className={styles.upload}>
                 <input type="file" name="file" id="file_up" onChange={handleUpload}/>
                 {
                     loading ? <div id="file_img"><Loading /></div>

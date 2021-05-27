@@ -21,7 +21,7 @@
 }
 .delete-all span{
     text-transform: uppercase;
-    color: rgb(3, 165, 206);
+    color: #549df6;
     letter-spacing: 1.3px;
 }
 .delete-all button{
@@ -30,7 +30,10 @@
     color: crimson;
     text-transform: uppercase;
 }
+.banner {
+    border-radius: 30px;
 
+}
 /* ------------ Filters Menu ----------------- */
 .filter_menu{
     width: 100%;
@@ -41,12 +44,17 @@
     align-items: center;
     flex-wrap: wrap;
     margin: 15px 0;
+    background-color: #fae9ac;
+    color: #222222;
+    padding: 12px;
 }
 .filter_menu select, input{
-    border: 1px solid #ccc;
+    /*border: 1px solid #ccc;*/
     outline: none;
     height: 40px;
     padding: 0 5px;
+    border-radius: 30px;
+
 }
 .filter_menu input{
     flex: 1;
@@ -58,8 +66,12 @@
     text-align: center;
 }
 .load_more button{
-    padding: 10px 25px;
+    padding: 5px 25px;
     margin-bottom: 20px;
-    border: 1px solid #555;
+    background-color: #fae9ac;
+    color: white;
     text-transform: capitalize;
+    border-radius: 50px;
+    outline: none;
+
 }

@@ -10,7 +10,7 @@ function LoadMore() {
         <div className="load_more">
             {
                 result < page * 9 ? ""
-                : <button onClick={() => setPage(page+1)}>Load more</button>
+                : <button className='outline-none ' onClick={() => setPage(page+1)}>Load more</button>
             }
         </div>
     )

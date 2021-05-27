@@ -1,7 +1,7 @@
 import React, {useContext, useState, useEffect} from 'react'
 import {useParams, Link} from 'react-router-dom'
 import {GlobalState} from '../../../GlobalState'
-import ProductItem from '../utils/productItem/ProductItem'
+import CardItem from "../utils/cardItem/cardItem";
 
 
 function DetailProduct() {
@@ -25,14 +25,15 @@ function DetailProduct() {
     return (
         <>
             <div className="detail">
-                <img src={detailProduct.images.url} alt="" />
+                <img  src={detailProduct.images.url} alt=""
+                className='lg:max-w-xl max-w-xs lg:mt-0 mt-10'/>
                 <div className="box-detail">
                     <div className="row">
-                        <h2>{detailProduct.title}</h2>
-                        <h6>#id: {detailProduct.product_id}</h6>
+                        <h2 className='lg:text-4xl text-3xl py-5 lg:py-10 text-gray-500'>{detailProduct.title}</h2>
+                        <h6 className='text-gray-400'>#id: {detailProduct.product_id}</h6>
                     </div>
-                    <span>$ {detailProduct.price}</span>
-                    <p>{detailProduct.description}</p>
+                    <span className='lg:text-3xl text-2xl text-gray-500'>$ {detailProduct.price}</span>
+                    {/*<p>{detailProduct.description}</p>*/}
                     <p>{detailProduct.content}</p>
                     <p>Sold: {detailProduct.sold}</p>
                     <Link to="/cart" className="cart"
@@ -48,7 +49,7 @@ function DetailProduct() {
                     {
                         products.map(product => {
                             return product.category === detailProduct.category 
-                                ? <ProductItem key={product._id} product={product} /> : null
+                                && <CardItem key={product._id} product={product} />
                         })
                     }
                 </div>

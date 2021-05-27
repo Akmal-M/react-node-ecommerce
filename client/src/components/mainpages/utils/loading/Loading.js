@@ -3,25 +3,11 @@ import './loading.css'
 
 function Loading() {
     return (
-        <div className="load-page">
-            <div className="loader">
-                <div>
-                    <div>
-                        <div>
-                            <div>
-                                <div>
-                                    <div>
-                                        <div>
-                                            <div></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+       <div className='wrapper-loading'>
+           <div className='loader'>
+               <h5> </h5>
+           </div>
+       </div>
     )
 }
 

@@ -16,14 +16,14 @@ function Filters() {
     }
 
     return (
-        <div className="filter_menu">
-            <div className="row">
-                <span>Filters: </span>
+        <div className="filter_menu lg:rounded-full rounded-xl  ">
+            <div className="row order-last lg:order-first">
+                <span className='font-bold text-gray-500'>Filters: </span>
                 <select name="category" value={category} onChange={handleCategory} >
-                    <option value=''>All Products</option>
+                    <option value='' className='text-xl' >All Products</option>
                     {
                         categories.map(category => (
-                            <option value={"category=" + category._id} key={category._id}>
+                            <option className='text-xl' value={"category=" + category._id} key={category._id}>
                                 {category.name}
                             </option>
                         ))
@@ -31,17 +31,17 @@ function Filters() {
                 </select>
             </div>
 
-            <input type="text" value={search} placeholder="Enter your search!"
+            <input className='pl-5 lg:order-2 order-first' type="text" value={search} placeholder="Enter your search!"
             onChange={e => setSearch(e.target.value.toLowerCase())} />
 
-            <div className="row sort">
-                <span>Sort By: </span>
-                <select value={sort} onChange={e => setSort(e.target.value)} >
+            <div className="row sort lg:order-last order-2">
+                <span className='font-bold text-gray-500'>Sort By: </span>
+                <select value={sort} onChange={e => setSort(e.target.value)} className='cursor-pointer text-xl outline-none'>
                     <option value=''>Newest</option>
                     <option value='sort=oldest'>Oldest</option>
                     <option value='sort=-sold'>Best sales</option>
-                    <option value='sort=-price'>Price: Hight-Low</option>
-                    <option value='sort=price'>Price: Low-Hight</option>
+                    <option value='sort=-price'>Price: Highest-Low</option>
+                    <option value='sort=price'>Price: Low-Highest</option>
                 </select>
             </div>
         </div>

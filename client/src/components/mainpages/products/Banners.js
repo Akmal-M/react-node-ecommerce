@@ -3,7 +3,8 @@ import {GlobalState} from '../../../GlobalState'
 import BannerItem from '../utils/bannerItem/BannerItem'
 import Loading from '../utils/loading/Loading'
 import axios from 'axios'
-import LoadMore from './LoadMore'
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/swiper-bundle.css'
 
 
 const Banners = () => {
@@ -53,10 +54,13 @@ const Banners = () => {
         banners.forEach(banner => {
             if(banner.checked) deleteBanner(banner._id, banner.images.public_id)
         })
+
     }
+    console.log(banners)
 
     if(loading) return <div><Loading /></div>
     return (
+
         <div className='mt-20'>
 
             {
@@ -68,14 +72,42 @@ const Banners = () => {
                 </div>
             }
 
-            <div className='lg:mt-24 mt-20'>
+            <div>
                 <div className=''>
                     {
                         banners.map(banner => {
                             return(
-                                <div className=''>
-                                    <BannerItem key={banner._id} banner={banner} isAdmin={isAdmin}/>
-                                </div>
+                              <div>
+
+
+                                     <div style={isAdmin ? { display:'block' } : { display:'none' }}>
+                                         <BannerItem key={banner._id} banner={banner} isAdmin={isAdmin}
+                                                     deleteBanner={deleteBanner} handleCheck={handleCheck}/>
+                                     </div>
+
+                                  {
+                                      !isAdmin &&
+                                      <Swiper
+                                          spaceBetween={0}
+                                          slidesPerView={1}
+                                          loop={"true"}
+                                          speed={3000}
+                                          autoplay={{
+
+                                              speed: 1000,
+                                              disableOnInteraction: false,
+                                              disableKeyboardControls: false,
+                                          }}
+
+                                      >
+                                          <SwiperSlide >
+                                              <div><img src={banner.images.url} alt=""/></div>
+                                          </SwiperSlide>
+
+                                      </Swiper>
+                                  }
+
+                              </div>
                             )
                         })
                     }
@@ -83,7 +115,7 @@ const Banners = () => {
                 {banners.length === 0 && <Loading/>}
             </div>
 
-            <LoadMore />
+
             {banners.length === 0 && <Loading />}
         </div>
     )

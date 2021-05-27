@@ -2,6 +2,7 @@ import React, {useContext, useState, useEffect} from 'react'
 import {GlobalState} from '../../../GlobalState'
 import axios from 'axios'
 import PaypalButton from './PaypalButton'
+import {Link} from "react-router-dom";
 
 function Cart() {
     const state = useContext(GlobalState)
@@ -78,7 +79,11 @@ function Cart() {
 
 
     if(cart.length === 0) 
-        return <h2 style={{textAlign: "center", fontSize: "5rem"}}>Cart Empty</h2> 
+        return <div>
+            <img className='lg:max-h-60 mx-auto' src='https://res.cloudinary.com/bulutvoy/image/upload/v1620465104/cart/empty-box_2_n12qzo.png' alt=""/>
+            <h2 className='text-center lg:text-5xl text-3xl py-5'>Your cart is empty.</h2>
+            <h2 className='text-center lg:text-2xl text-xl py-5'>Go to <Link to='/' className='text-yellow-200'>shop.</Link></h2>
+        </div>
 
     return (
         <div>
